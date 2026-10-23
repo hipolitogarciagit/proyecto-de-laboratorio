@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de perfumes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <h1>Tienda de perfumes</h1>
+            <nav class="main-nav" aria-label="Navegacion principal">
+                <button id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">Modo oscuro</button>
+                <a href="#productos">Productos</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#carrito">Carrito (<span id="cart-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <section id="hero" class="hero-section">
+            <div class="hero-text">
+                <h2>Las mejores fragancias</h2>
+                <p>Descubre una amplia variedad de fragancias y marcas de excelente calidad.</p>
+            </div>
+        </section>
+
+        <section id="productos" class="products-section">
+            <div class="section-header">
+                <h2>Nuestros productos</h2>
+            </div>
+            <div id="products-container" class="products-grid"></div>
+        </section>
+
+        <section id="carrito" class="cart-section">
+            <h2>Carrito</h2>
+            <ul id="cart-list" class="cart-list"></ul>
+            <p id="cart-total" class="cart-total">Total: $0</p>
+            <div class="cart-actions">
+                <button type="button" data-action="clear-cart">Vaciar carrito</button>
+                <button type="button" data-action="checkout">Finalizar compra</button>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <h2>Contacto</h2>
+            <p>Escríbenos para pedidos por mayor o consultas.</p>
+            <ul class="contact-list">
+                <li>Teléfono: 3865204344</li>
+                <li>Email: venta.perfumes@gmail.com</li>
+                <li>Dirección: Argentina - Tucumán</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Tienda de perfumes. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="datos.js"></script>
+    <script src="catalogo.js"></script>
+    <script src="carrito.js"></script>
+    <script src="eventos.js"></script>
+</body>
+</html>

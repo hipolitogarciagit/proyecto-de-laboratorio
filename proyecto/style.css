@@ -1,0 +1,204 @@
+/* Colores usados cuando la pagina esta en modo claro. */
+:root {
+    --page-bg: blanchedalmond; 
+    --surface-bg: #f5deb3; 
+    --text-color: #332525; 
+    --accent-color: #503b3b; 
+    --border-color: #503b3b; 
+    --button-bg: #503b3b6d; 
+}
+
+/* Reemplaza los colores anteriores cuando el body tiene el tema oscuro. */
+body[data-theme="dark"] {
+    --page-bg: #211d1b;
+    --surface-bg: #332c28;
+    --text-color: #f5e9dc;
+    --accent-color: #f0c98b;
+    --border-color: #9b775c;
+    --button-bg: #6b5448;
+}
+
+/* Estilos generales para toda la pagina. */
+body {
+    margin: 0; 
+    background-color: var(--page-bg); 
+    color: var(--text-color); 
+    font-family: Arial, sans-serif; 
+}
+
+/* Aplica el color de superficie al encabezado y al pie. */
+.site-header,
+.site-footer {
+    background: var(--surface-bg);
+}
+
+/* Separa el encabezado del contenido principal con un borde. */
+.site-header {
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Alinea el titulo y la navegacion dentro del encabezado. */
+.header-inner {
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 1rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 1rem; 
+}
+
+/* Ordena los enlaces y el boton de navegacion. */
+.main-nav {
+    display: flex; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+}
+
+/* Da estilo a los enlaces de navegacion. */
+.main-nav a {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Centra y limita el ancho del contenido principal. */
+.page-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Centra el texto de bienvenida y el titulo de productos. */
+.hero-text,
+.section-header {
+    text-align: center;
+}
+
+/* Separa verticalmente las secciones principales. */
+.products-section,
+.cart-section,
+.contact-section {
+    margin: 2rem 0;
+}
+
+/* Da forma y estilo a cada tarjeta de producto. */
+.product-card {
+    width: 320px;
+    padding: 1rem; 
+    border: 2px solid var(--border-color); 
+    border-radius: 12px; 
+    background: var(--surface-bg); 
+    box-sizing: border-box; 
+    text-align: center; 
+}
+
+/* Ajusta las imagenes para que se vean completas dentro de cada tarjeta. */
+.product-card img {
+    display: block;
+    width: 180px;
+    max-width: 100%;
+    height: 220px;
+    margin: 0 auto; 
+    border: 2px solid var(--border-color); 
+    border-radius: 20px; 
+    box-sizing: border-box; 
+    object-fit: contain; 
+}
+
+/* Deja una separacion corta bajo el nombre del producto. */
+.product-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Destaca el precio de cada producto. */
+.product-price {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Distribuye las tarjetas y las acomoda en filas cuando hace falta. */
+.products-grid {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 2.5rem; 
+}
+
+/* Estilo compartido por todos los botones. */
+button {
+    display: inline-block; 
+    margin: 0.4rem; 
+    padding: 0.45rem 0.9rem; 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; 
+    background: var(--button-bg); 
+    cursor: pointer; 
+}
+
+/* Quita los estilos de lista para controlar el aspecto del carrito. */
+.cart-list {
+    padding: 0;
+    list-style: none;
+}
+
+/* Muestra cada producto del carrito como una fila con marco. */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-bg);
+}
+
+/* Alinea la informacion y los controles de cada producto del carrito. */
+.cart-item-info,
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Hace que el total del carrito sea mas visible. */
+.cart-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Ordena los botones para vaciar y finalizar la compra. */
+.cart-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Agrega espacio al pie y centra su texto. */
+.site-footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Ajustes para pantallas angostas, como celulares. */
+@media (max-width: 600px) {
+    /* Apila el encabezado y las filas del carrito verticalmente. */
+    .header-inner,
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Reduce un poco el espacio entre elementos de navegacion. */
+    .main-nav {
+        gap: 0.75rem;
+    }
+
+    /* Evita que la tarjeta se salga del ancho disponible en el celular. */
+    .product-card {
+        width: min(100%, 320px);
+    }
+}
