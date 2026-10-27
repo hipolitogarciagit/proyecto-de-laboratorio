@@ -63,7 +63,7 @@ function renderizarCarrito() {
     cartTotal.textContent = `Total: ${formatoPrecioCarrito.format(precioTotal)}`;
 
     if (carrito.length === 0) {
-        cartList.innerHTML = "<li>Tu carrito está vacío.</li>";
+        cartList.innerHTML = "<li>Tu carrito esta vacio.</li>";
         return;
     }
 
