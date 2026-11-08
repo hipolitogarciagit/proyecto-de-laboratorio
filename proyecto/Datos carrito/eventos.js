@@ -6,10 +6,12 @@ export function inicializarEventos({
     cambiarCantidad,
     eliminarDelCarrito,
     vaciarCarrito,
-    finalizarCompra
+    finalizarCompra,
+    renderizarProductos
 }) {
     // Busca los contenedores donde se manejaran los eventos delegados.
     const productsEventContainer = document.querySelector("#products-container");
+    const botonesFiltro = document.querySelectorAll(".filtros__btn");
     const cartEventContainer = document.querySelector("#cart-list");
     const cartActionsContainer = document.querySelector(".cart-actions");
     const themeToggleButton = document.querySelector("#theme-toggle");
@@ -92,5 +94,24 @@ export function inicializarEventos({
         } else if (boton.dataset.action === "checkout") {
             finalizarCompra();
         }
+    });
+    // Filtro de Productos
+    botonesFiltro.forEach((boton) => { 
+
+        boton.addEventListener("click", () => {
+            const categoria = boton.dataset.categoria;
+            const productosFiltrados = categoria === "todos"
+                ? productos : productos.filter((producto) =>
+                producto.categoria === categoria ); 
+        
+            renderizarProductos(productosFiltrados);
+
+        // Cambiar el boton activo
+        botonesFiltro.forEach((btn) => {
+            btn.classList.remove("activo");
+        });
+        boton.classList.add("activo");
+
+        });
     });
 }

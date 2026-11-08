@@ -1,5 +1,6 @@
 import { productos } from "./datos.js";
 
+
 // Busca el contenedor donde se mostraran las tarjetas del catalogo.
 const productsContainer = document.querySelector("#products-container");
 
@@ -11,8 +12,8 @@ const formatoPrecioProductos = new Intl.NumberFormat("es-AR", {
 });
 
 // Genera las tarjetas del catalogo a partir del arreglo de datos.js.
-export function renderizarProductos() {
-    productsContainer.innerHTML = productos.map((producto) => `
+export function renderizarProductos(listaProductos) {
+    productsContainer.innerHTML = listaProductos.map((producto) => `
         <article class="product-card">
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>

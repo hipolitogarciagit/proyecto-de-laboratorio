@@ -152,11 +152,12 @@ function finalizarCompra() {
 
 // Muestra el carrito al cargar la pagina.
 renderizarCarrito();
-renderizarProductos();
+renderizarProductos(productos);
 inicializarEventos({
     agregarAlCarrito,
     cambiarCantidad,
     eliminarDelCarrito,
     vaciarCarrito,
-    finalizarCompra
+    finalizarCompra,
+    renderizarProductos
 });
