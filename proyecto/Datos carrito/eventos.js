@@ -11,7 +11,7 @@ export function inicializarEventos({
 }) {
     // Busca los contenedores donde se manejaran los eventos delegados.
     const productsEventContainer = document.querySelector("#products-container");
-    const botonesFiltro = document.querySelectorAll(".filtros__btn");
+    const filtrosContainer = document.querySelector(".filtros__categorias");
     const cartEventContainer = document.querySelector("#cart-list");
     const cartActionsContainer = document.querySelector(".cart-actions");
     const themeToggleButton = document.querySelector("#theme-toggle");
@@ -95,23 +95,24 @@ export function inicializarEventos({
             finalizarCompra();
         }
     });
-    // Filtro de Productos
-    botonesFiltro.forEach((boton) => { 
+    // Un solo listener gestiona los filtros y sus botones descendientes.
+    filtrosContainer.addEventListener("click", (event) => {
+        const boton = event.target.closest(".filtros__btn");
+        if (!boton || !filtrosContainer.contains(boton)) {
+            return;
+        }
 
-        boton.addEventListener("click", () => {
-            const categoria = boton.dataset.categoria;
-            const productosFiltrados = categoria === "todos"
-                ? productos : productos.filter((producto) =>
-                producto.categoria === categoria ); 
-        
-            renderizarProductos(productosFiltrados);
+        const categoria = boton.dataset.categoria;
+        const productosFiltrados = productos.filter((producto) =>
+            categoria === "todos" || producto.categoria === categoria
+        );
 
-        // Cambiar el boton activo
-        botonesFiltro.forEach((btn) => {
-            btn.classList.remove("activo");
-        });
-        boton.classList.add("activo");
+        renderizarProductos(productosFiltrados);
 
+        filtrosContainer.querySelectorAll(".filtros__btn").forEach((btn) => {
+            const estaActivo = btn === boton;
+            btn.classList.toggle("activo", estaActivo);
+            btn.setAttribute("aria-pressed", String(estaActivo));
         });
     });
 }
